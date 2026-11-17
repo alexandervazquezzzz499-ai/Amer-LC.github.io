@@ -474,35 +474,6 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    @media (max-width: 720px) {
-      .nav-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        gap: 14px;
-        padding: 20px 5vw 26px;
-        background: rgba(0, 0, 0, .98);
-        border-bottom: 1px solid var(--line);
-        font-size: .85rem;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 6px 0;
-        font-size: .9rem;
-      }
-    }
-
     /* ============================================================
        SEPARADORES DE SECCIÓN
        ============================================================ */
@@ -538,7 +509,8 @@
       position: relative;
       display: grid;
       place-items: center;
-      min-height: 88vh;
+      min-height: 100svh;
+      /* Mejor altura en móviles */
       padding: 60px 5vw;
       overflow: hidden;
       text-align: center;
@@ -551,11 +523,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* Hace que el video llene toda la pantalla */
       z-index: 0;
       pointer-events: none;
       opacity: 0.8;
-      /* Transparencia para que el texto resalte */
     }
 
     .hero::before {
@@ -618,7 +588,7 @@
     .logo-word {
       display: block;
       font-family: 'SanguineFrost', Anton, Impact, sans-serif;
-      font-size: clamp(5rem, 24vw, 18rem);
+      font-size: clamp(4rem, 20vw, 18rem);
       font-weight: normal;
       text-transform: uppercase;
       letter-spacing: .22em;
@@ -693,7 +663,7 @@
       transform: translateY(-55%);
       opacity: 0;
       transition: opacity .4s ease;
-      width: clamp(180px, 28vw, 380px);
+      width: clamp(100px, 20vw, 380px);
       height: auto;
     }
 
@@ -833,6 +803,7 @@
       position: relative;
       overflow: hidden;
       font-family: inherit;
+      text-align: center;
     }
 
     .btn::before {
@@ -1597,30 +1568,6 @@
       box-shadow: 0 0 8px rgba(198, 255, 0, .6);
     }
 
-    @media (max-width: 720px) {
-      .player-body {
-        flex-direction: column;
-      }
-
-      .volume-side {
-        flex-direction: row;
-        width: auto;
-        padding: 12px 20px 16px;
-        border-left: none;
-        border-top: 1px solid var(--line);
-        gap: 12px;
-      }
-
-      .volume-side .volume-slider {
-        writing-mode: horizontal-tb;
-        direction: ltr;
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100%;
-        height: 4px;
-      }
-    }
-
     .playlist-list {
       max-height: 420px;
       overflow-y: auto;
@@ -1836,12 +1783,6 @@
       gap: 16px;
     }
 
-    @media (max-width: 720px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .form-msg {
       margin-top: 14px;
       font-size: .82rem;
@@ -1934,107 +1875,6 @@
       margin-top: 18px;
       font-size: .72rem;
       color: #666;
-    }
-
-    /* ============================================================
-       16. RESPONSIVE
-       ============================================================ */
-    @media (max-width: 720px) {
-      .bio {
-        grid-template-columns: 1fr;
-      }
-
-      .wall {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .wall .tile:first-child {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
-
-      .hits li {
-        grid-template-columns: 44px 1fr;
-      }
-
-      .hits a {
-        grid-column: 2;
-        justify-self: start;
-      }
-
-      section {
-        padding: 60px 5vw;
-      }
-
-      .now-playing {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .pl-item {
-        grid-template-columns: 28px 1fr;
-      }
-
-      .pl-thumb,
-      .pl-yt {
-        display: none;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .loader-title {
-        font-size: 2.5rem;
-      }
-
-      /* Ocultar video en móviles para ahorrar datos y batería */
-      .hero-bg-video {
-        display: none;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
-      }
-
-      .reveal,
-      .reveal-left,
-      .reveal-right {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero>div>* {
-      animation: fadeInUp .8s ease both;
-    }
-
-    .hero>div>.tag {
-      animation-delay: .3s;
-    }
-
-    .hero>div>.btn {
-      animation-delay: .5s;
     }
 
     /* ============================================================
@@ -2191,13 +2031,205 @@
       }
     }
 
-    @media (max-width: 1024px) {
+    /* ============================================================
+       16. RESPONSIVE (SOPORTE MÓVIL OPTIMIZADO)
+       ============================================================ */
+    @media (max-width: 900px) {
 
       .side-decor,
       .side-glow-left,
       .side-glow-right {
         display: none;
       }
+    }
+
+    @media (max-width: 720px) {
+
+      /* Ajustes del Hero */
+      .hero {
+        padding: 40px 5vw;
+        min-height: 90svh;
+      }
+
+      .hero-bg-video {
+        display: none;
+      }
+
+      .logo-word {
+        font-size: clamp(3.5rem, 16vw, 8rem);
+        letter-spacing: 0.15em;
+      }
+
+      .wing {
+        width: 90px;
+      }
+
+      /* Botones apilados */
+      .hero>div>.btn {
+        display: block;
+        width: 90%;
+        max-width: 300px;
+        margin: 15px auto 0;
+      }
+
+      /* Layout general */
+      .bio {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 5vw;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wall {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .wall .tile:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        aspect-ratio: 16/9;
+      }
+
+      /* Hits */
+      .hits li {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .hits a {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 8px;
+      }
+
+      /* Reproductor de Música */
+      .now-playing {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .np-thumb {
+        width: 80px;
+        height: 80px;
+      }
+
+      .np-title {
+        font-size: 1.5rem;
+      }
+
+      .player-body {
+        flex-direction: column;
+      }
+
+      .progress-wrap {
+        padding: 12px 20px;
+      }
+
+      .player-controls {
+        padding: 12px 20px 20px;
+      }
+
+      /* Volumen horizontal en móvil */
+      .volume-side {
+        flex-direction: row;
+        width: auto;
+        padding: 12px 20px 16px;
+        border-left: none;
+        border-top: 1px solid var(--line);
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .volume-side .volume-slider {
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 4px;
+        background: var(--line);
+        border-radius: 2px;
+      }
+
+      .volume-side .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--acc);
+        border: 0;
+        box-shadow: 0 0 8px rgba(198, 255, 0, .6);
+      }
+
+      /* Playlist */
+      .pl-item {
+        grid-template-columns: 30px 1fr;
+        gap: 10px;
+        padding: 12px 15px;
+      }
+
+      .pl-thumb,
+      .pl-yt {
+        display: none;
+      }
+
+      /* Loader */
+      .loader-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal,
+      .reveal-left,
+      .reveal-right {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero>div>* {
+      animation: fadeInUp .8s ease both;
+    }
+
+    .hero>div>.tag {
+      animation-delay: .3s;
+    }
+
+    .hero>div>.btn {
+      animation-delay: .5s;
     }
   </style>
 </head>
@@ -2259,7 +2291,7 @@
     <!-- ============ HERO ============ -->
     <header class="hero">
 
-      <!-- FONDO DE VIDEO LOCAL -->
+      <!-- VIDEO DE FONDO LOCAL -->
       <video autoplay muted loop playsinline class="hero-bg-video" poster="assets/perco_thumb.jpg">
         <source src="assets/download.mp4" type="video/mp4">
       </video>
@@ -2542,6 +2574,11 @@
   <button id="back-to-top" aria-label="Volver arriba">↑</button>
 
   <script>
+    // Forzar al navegador a olvidar la posición del scroll al recargar
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     /* ============================================================
        CONFIGURACIÓN
        ============================================================ */
@@ -2634,19 +2671,29 @@
     let ytApiLoaded = false;
 
     /* ============================================================
-       LOADER
+       LOADER (SIEMPRE APARECE Y FUERZA EL SCROLL AL TOP)
        ============================================================ */
     function initLoader() {
       const loader = $('loader');
-      if (reduceMotion || sessionStorage.getItem('alc_visited')) {
+
+      if (reduceMotion) {
         loader.style.display = 'none';
+        window.scrollTo(0, 0);
         return;
       }
+
+      // Forzar el scroll arriba apenas inicia
+      window.scrollTo(0, 0);
+
       setTimeout(() => {
         loader.classList.add('fade-out');
+
+        // Forzar de nuevo por si acaso el navegador intentó bajar
+        window.scrollTo(0, 0);
+
         setTimeout(() => {
           loader.style.display = 'none';
-          sessionStorage.setItem('alc_visited', '1');
+          window.scrollTo(0, 0); // Y de nuevo al quitar el loader
         }, 650);
       }, 2000);
     }
@@ -3100,7 +3147,7 @@
        PARALLAX SUTIL
        ============================================================ */
     function initHeroParallax() {
-      if (reduceMotion) return;
+      if (reduceMotion || window.innerWidth <= 720) return; // Desactivar en móvil
       const logoContainer = $("logo-container");
       const hero = qs(".hero");
       if (!logoContainer || !hero) return;
@@ -3126,6 +3173,8 @@
       if (!canvas || reduceMotion) return;
 
       const ctx = canvas.getContext("2d");
+      const isMobile = window.innerWidth <= 720;
+      const maxParticles = isMobile ? 50 : 140; // Menos partículas en móvil
 
       class SmokeParticle {
         constructor(x, y, fromMouse) {
@@ -3249,7 +3298,7 @@
         }
 
         particles = particles.filter((p) => !p.dead);
-        if (particles.length > 140) particles.splice(0, particles.length - 140);
+        if (particles.length > maxParticles) particles.splice(0, particles.length - maxParticles);
         particles.forEach((p) => { p.update(); p.draw(); });
 
         requestAnimationFrame(loop);
@@ -3357,10 +3406,12 @@
         });
       });
 
-      updateNowPlaying(0);
+      // AQUI ESTABA EL ERROR: Evitamos que haga scroll al cargar la página
+      updateNowPlaying(0, true);
     }
 
-    function updateNowPlaying(idx) {
+    // Se agregó el parámetro skipScroll
+    function updateNowPlaying(idx, skipScroll = false) {
       const track = PLAYLIST[idx];
       $("np-title").textContent = track.title;
       $("np-artist").textContent = track.artist;
@@ -3369,13 +3420,17 @@
       document.querySelectorAll(".pl-item").forEach((el, i) => {
         el.classList.toggle("active", i === idx);
       });
-      const activeItem = qs(`.pl-item[data-index="${idx}"]`);
-      if (activeItem) activeItem.scrollIntoView({ block: "nearest", behavior: "smooth" });
+
+      // Si NO es la carga inicial, hacemos scroll
+      if (!skipScroll) {
+        const activeItem = qs(`.pl-item[data-index="${idx}"]`);
+        if (activeItem) activeItem.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
     }
 
     function loadTrack(idx, autoplay) {
       currentTrack = idx;
-      updateNowPlaying(idx);
+      updateNowPlaying(idx, false); // false = sí hace scroll cuando el usuario cambia de canción
       $("progress-fill").style.width = "0%";
       $("time-current").textContent = "0:00";
       $("time-total").textContent = "0:00";
